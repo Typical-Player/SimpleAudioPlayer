@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "File.h"
 #include <taglib/tag.h>
 #include <taglib/fileref.h>

@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Form1.h"
 
 System::Void SAP::Form1::fileToolStripMenuItem_DropDownOpened(System::Object^ sender, System::EventArgs^ e)

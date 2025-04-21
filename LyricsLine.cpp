@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "LyricsLine.h"
 
 LRCService::LyricsLine::LyricsLine(String^ lrcContent, Int64 timeMiliseconds, Int64 lrcId)

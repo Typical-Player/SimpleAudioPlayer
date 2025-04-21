@@ -1,4 +1,3 @@
-#include "pch.h"
 /*
 Audio playback and capture library. Choice of public domain or MIT-0. See license statements at the end of this file.
 miniaudio - v0.11.21 - 2023-11-15
@@ -2756,8 +2755,8 @@ extern "C" {
 			mov ebx, dword ptr desired
 			mov ecx, dword ptr desired + 4
 			lock cmpxchg8b qword ptr[esi]
-			mov resultEAX, eax
-			mov resultEDX, edx
+				mov resultEAX, eax
+					mov resultEDX, edx
 		}
 		return ((ma_uint64)resultEDX << 32) | resultEAX;
 	}
@@ -6693,7 +6692,7 @@ MA_API ma_bool32 ma_is_backend_enabled(ma_backend backend)
 	case ma_backend_aaudio:
 #if defined(MA_HAS_AAUDIO)
 #if defined(MA_ANDROID)
-		{
+	{
 		return ma_android_sdk_version() >= 26;
 	}
 #else
@@ -6705,7 +6704,7 @@ MA_API ma_bool32 ma_is_backend_enabled(ma_backend backend)
 	case ma_backend_opensl:
 #if defined(MA_HAS_OPENSL)
 #if defined(MA_ANDROID)
-		{
+	{
 		return ma_android_sdk_version() >= 9;
 	}
 #else
