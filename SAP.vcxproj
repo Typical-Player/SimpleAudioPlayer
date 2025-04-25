@@ -156,6 +156,7 @@
     <ClInclude Include="Settings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="TaglibDriver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="About.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TaglibDriver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="albumCoverNoAvailable.png" />
