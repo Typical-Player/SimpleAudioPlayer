@@ -26,8 +26,6 @@ namespace Native {
 
 	typedef unsigned int uint;
 
-
-
 	class TaglibDriver
 	{
 	public:
@@ -90,7 +88,7 @@ namespace Native {
 
 		Image^ m_mpeg3_metadataGetImage(TagLib::MPEG::File* mpegFile);
 
-		/// \Note FLAC - speficics
+		/// \Note FLAC - specifics
 
 		Image^ m_flac_metadataGetImage(TagLib::FLAC::File* flacFile);
 
