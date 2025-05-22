@@ -1,71 +1,57 @@
 #include "Form1.h"
 
-System::Void SAP::Form1::fileToolStripMenuItem_DropDownOpened(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::fileToolStripMenuItem_DropDownOpened(System::Object^ sender, System::EventArgs^ e) {
 	this->fileToolStripMenuItem->ForeColor = System::Drawing::Color::Black;
 }
 
-System::Void SAP::Form1::fileToolStripMenuItem_DropDownClosed(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::fileToolStripMenuItem_DropDownClosed(System::Object^ sender, System::EventArgs^ e) {
 	this->fileToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 }
 
-System::Void SAP::Form1::sAPSimpleAudioPlayerToolStripMenuItem_DropDownClosed(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::sAPSimpleAudioPlayerToolStripMenuItem_DropDownClosed(System::Object^ sender, System::EventArgs^ e) {
 	this->sAPSimpleAudioPlayerToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 }
 
-System::Void SAP::Form1::sAPSimpleAudioPlayerToolStripMenuItem_DropDownOpened(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::sAPSimpleAudioPlayerToolStripMenuItem_DropDownOpened(System::Object^ sender, System::EventArgs^ e) {
 	this->sAPSimpleAudioPlayerToolStripMenuItem->ForeColor = System::Drawing::Color::Black;
 }
 
-System::Void SAP::Form1::reactEventBtnHoverEnter(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::reactEventBtnHoverEnter(System::Object^ sender, System::EventArgs^ e) {
 	auto snd = cli::safe_cast<System::Windows::Forms::Button^>(sender);
-	if (snd != nullptr)
-	{
+	if (snd != nullptr) {
 		snd->BackColor = System::Drawing::Color::FromArgb(16, 16, 16);
 	}
 }
 
-System::Void SAP::Form1::reactEventBtnHoverLeave(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::reactEventBtnHoverLeave(System::Object^ sender, System::EventArgs^ e) {
 	auto snd = cli::safe_cast<System::Windows::Forms::Button^>(sender);
-	if (snd != nullptr)
-	{
+	if (snd != nullptr) {
 		snd->BackColor = System::Drawing::Color::Transparent;
 	}
 }
 
-System::Void SAP::Form1::exitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::exitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
 
-System::Void SAP::Form1::quickImportToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	if (folderLoaded)
-	{
+System::Void SAP::Form1::quickImportToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (folderLoaded) {
 		System::Windows::Forms::MessageBox::Show("You already have a folder selected! Reopen the app to select another folder", "Folder already loaded", System::Windows::Forms::MessageBoxButtons::OK);
 		return;
 	}
 
 	folderDialog = gcnew System::Windows::Forms::FolderBrowserDialog();
-	if (folderDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK && folderDialog->SelectedPath != "")
-	{
+	if (folderDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK && folderDialog->SelectedPath != "") {
 		array<String^>^ files = System::IO::Directory::GetFiles(folderDialog->SelectedPath);
 
 		System::Collections::Generic::List<SAP::File^>^ li = gcnew System::Collections::Generic::List<SAP::File^>();
 
 		loading = true;
 		this->songTitleLabel->Text = "Loading...";
-		for each (String ^ file in files)
-		{
+		for each (String ^ file in files) {
 			File^ f = gcnew File(file);
 
-			if (f->getIsValid())
-			{
+			if (f->getIsValid()) {
 				li->Add(f);
 				this->songArtistLabel->Text = "File loaded: " + f->getFilePath();
 			}
@@ -79,22 +65,18 @@ System::Void SAP::Form1::quickImportToolStripMenuItem_Click(System::Object^ send
 	}
 }
 
-void SAP::Form1::updateColor(System::Windows::Forms::Control^ c)
-{
+void SAP::Form1::updateColor(System::Windows::Forms::Control^ c) {
 	c->BackColor = baseColor;
 	c->ForeColor = txtColor;
-	for each (System::Object ^ subCtr in c->Controls)
-	{
+	for each (System::Object ^ subCtr in c->Controls) {
 		auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
-		if (control != nullptr)
-		{
+		if (control != nullptr) {
 			updateColor(control);
 		}
 	}
 }
 
-void SAP::Form1::updateUnique()
-{
+void SAP::Form1::updateUnique() {
 	this->BackColor = shadeDarkColor;
 	this->tableLayoutPanel4->BackColor = shadeDarkerColor;
 	this->songTitleLabel->BackColor = shadeDarkerColor;
@@ -114,10 +96,8 @@ void SAP::Form1::updateUnique()
 	this->songListGridView->GridColor = txtColor;
 }
 
-void SAP::Form1::loadColor(int colorId)
-{
-	switch (colorId)
-	{
+void SAP::Form1::loadColor(int colorId) {
+	switch (colorId) {
 	case 0:
 		//Default
 		Diagnostics::Debug::WriteLine("Theme 0 loading...");
@@ -125,11 +105,9 @@ void SAP::Form1::loadColor(int colorId)
 		shadeDarkColor = System::Drawing::Color::FromArgb(25, 25, 25);
 		shadeDarkerColor = System::Drawing::Color::FromArgb(16, 16, 16);
 		txtColor = System::Drawing::Color::White;
-		for each (System::Object ^ subCtr in this->Controls)
-		{
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
-			if (control != nullptr)
-			{
+			if (control != nullptr) {
 				updateColor(control);
 			}
 		}
@@ -142,11 +120,9 @@ void SAP::Form1::loadColor(int colorId)
 		shadeDarkColor = System::Drawing::Color::FromArgb(40, 65, 82);
 		shadeDarkerColor = System::Drawing::Color::FromArgb(20, 35, 42);
 		txtColor = System::Drawing::Color::White;
-		for each (System::Object ^ subCtr in this->Controls)
-		{
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
-			if (control != nullptr)
-			{
+			if (control != nullptr) {
 				updateColor(control);
 			}
 		}
@@ -160,11 +136,9 @@ void SAP::Form1::loadColor(int colorId)
 		shadeDarkerColor = System::Drawing::Color::FromArgb(30, 20, 40);
 		txtColor = System::Drawing::Color::White;
 
-		for each (System::Object ^ subCtr in this->Controls)
-		{
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
-			if (control != nullptr)
-			{
+			if (control != nullptr) {
 				updateColor(control);
 			}
 		}
@@ -178,11 +152,9 @@ void SAP::Form1::loadColor(int colorId)
 		shadeDarkerColor = System::Drawing::Color::FromArgb(0, 0, 0);
 		txtColor = System::Drawing::Color::White;
 
-		for each (System::Object ^ subCtr in this->Controls)
-		{
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
-			if (control != nullptr)
-			{
+			if (control != nullptr) {
 				updateColor(control);
 			}
 		}
@@ -196,11 +168,9 @@ void SAP::Form1::loadColor(int colorId)
 		shadeDarkerColor = System::Drawing::Color::FromArgb(255, 255, 255);
 		txtColor = System::Drawing::Color::Black;
 
-		for each (System::Object ^ subCtr in this->Controls)
-		{
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
-			if (control != nullptr)
-			{
+			if (control != nullptr) {
 				updateColor(control);
 			}
 		}
@@ -214,11 +184,9 @@ void SAP::Form1::loadColor(int colorId)
 		shadeDarkerColor = System::Drawing::Color::FromArgb(55, 95, 45);
 		txtColor = System::Drawing::Color::Black;
 
-		for each (System::Object ^ subCtr in this->Controls)
-		{
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
-			if (control != nullptr)
-			{
+			if (control != nullptr) {
 				updateColor(control);
 			}
 		}
@@ -227,8 +195,7 @@ void SAP::Form1::loadColor(int colorId)
 	}
 }
 
-System::Void SAP::Form1::settingsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::settingsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	SAP::Settings^ settingsForm = gcnew SAP::Settings(currentTheme);
 	settingsForm->ShowDialog();
 	Diagnostics::Debug::WriteLine("MainForm: " + settingsForm->SettingsThemeValue);
@@ -237,81 +204,64 @@ System::Void SAP::Form1::settingsToolStripMenuItem_Click(System::Object^ sender,
 	loadColor(currentTheme);
 }
 
-System::Void SAP::Form1::licensesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::licensesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	SAP::Licenses^ licenseForm = gcnew SAP::Licenses;
 	licenseForm->ShowDialog();
 }
 
-System::Void SAP::Form1::aboutSAPToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::aboutSAPToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	SAP::About^ aboutForm = gcnew SAP::About;
 	aboutForm->ShowDialog();
 }
 
-System::Void SAP::Form1::shuffleToggleBtn_Click(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::shuffleToggleBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
-	if (!shuffleActive)
-	{
+	if (!shuffleActive) {
 		this->shuffleToggleBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"shuffleON")));
 		this->shuffleActive = true;
-	}
-	else {
+	} else {
 		this->shuffleToggleBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"shuffleToggleBtn.BackgroundImage")));
 		this->shuffleActive = false;
 	}
 }
 
-System::Void SAP::Form1::repeatToggleBtn_Click(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::repeatToggleBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
-	if (!repeatActive)
-	{
+	if (!repeatActive) {
 		this->repeatToggleBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"repeatON")));
 		this->repeatActive = true;
-	}
-	else {
+	} else {
 		this->repeatToggleBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"repeatToggleBtn.BackgroundImage")));
 		this->repeatActive = false;
 	}
 }
 
-void SAP::Form1::songLoadMetadata()
-{
-	if (!loading)
-	{
+void SAP::Form1::songLoadMetadata() {
+	if (!loading) {
 		File^ file = static_cast<SAP::File^>(this->songListGridView->Rows[this->songListGridView->CurrentCell->RowIndex]->DataBoundItem);
 
-		if (file != nullptr)
-		{
+		if (file != nullptr) {
 			this->songLRCList->Items->Clear();
 			lyrics->clear();
-			if (!file->getIsValid())
-			{
+			if (!file->getIsValid()) {
 				this->songArtistLabel->Text = "FILEPATH:[ " + file->getFilePath() + " ]";
 				this->songTitleLabel->Text = "Error while reading metadata!";
-			}
-			else {
+			} else {
 				System::Drawing::Image^ img = file->tryGetImage();
 
-				if (img != nullptr)
-				{
+				if (img != nullptr) {
 					this->songPicBox->Image = img;
-				}
-				else {
+				} else {
 					System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
 					this->songPicBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"songPicBox.Image")));
 				}
 				file->getLyricsSynced(lyrics);
 
-				if (lyrics->getIsSynced())
-				{
+				if (lyrics->getIsSynced()) {
 					Diagnostics::Debug::WriteLine("LrcService: OK: Lyrics Detected!");
 					lyrics->populateList(this->songLRCList);
 
-				}
-				else {
+				} else {
 					Diagnostics::Debug::WriteLine("LrcService: WARN: couldnt detect synced lyrics!");
 					this->songLRCList->Items->Add("No synced lyrics found!");
 				}
@@ -322,27 +272,19 @@ void SAP::Form1::songLoadMetadata()
 	}
 }
 
-System::Void SAP::Form1::playButton_Click(System::Object^ sender, System::EventArgs^ e)
-{
+System::Void SAP::Form1::playButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
-	if (player == nullptr)
-	{
+	if (player == nullptr) {
 		player = gcnew Player();
 	}
-	if (player != nullptr && currentFile != nullptr)
-	{
-		if (player->paused() && player->fileValid() && player->engineValid()) {
+	if (player != nullptr && currentFile != nullptr) {
+		if (player->paused()) {
 			player->play();
 			wasPlaying = true;
 			this->seekBarUpdate->Enabled = true;
 			this->playButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pause")));
 			this->lyricsUpdateTimer->Enabled = true;
-		}
-		else {
-			if (!player->fileValid() || !player->engineValid())
-			{
-				System::Diagnostics::Debug::WriteLine("MA: ERR: Either file is invalid or engine is invalid!");
-			}
+		} else {
 			player->pause();
 			wasPlaying = false;
 			this->seekBarUpdate->Enabled = false;
@@ -352,45 +294,36 @@ System::Void SAP::Form1::playButton_Click(System::Object^ sender, System::EventA
 	}
 }
 
-System::Void SAP::Form1::songListGridView_CellMouseDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^ e)
-{
-	if (!loading)
-	{
+System::Void SAP::Form1::songListGridView_CellMouseDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^ e) {
+	if (!loading) {
 		songLoadMetadata();
 		File^ file = static_cast<SAP::File^>(this->songListGridView->Rows[this->songListGridView->CurrentCell->RowIndex]->DataBoundItem);
 
-		if (player == nullptr)
-		{
+		if (player == nullptr) {
 			player = gcnew Player();
 		}
 
-		if (file != nullptr)
-		{
+		if (file != nullptr) {
 			if (!file->getIsValid()) {
 				this->songArtistLabel->Text = "FILEPATH:[ " + file->getFilePath() + " ]";
 				this->songTitleLabel->Text = "Error while reading metadata!";
-			}
-			else {
+			} else {
 				this->songArtistLabel->Text = file->getArtist() + " - " + file->getAlbum();
 				this->songTitleLabel->Text = file->getTitle();
 				this->songTotalTimeLabel->Text = "/  " + (file->getMinutes() < 10 ? ("0" + file->getMinutes().ToString()) : file->getMinutes().ToString()) + ":" + (file->getSeconds() < 10 ? ("0" + file->getSeconds().ToString()) : file->getSeconds().ToString());
 				currentFile = file;
 
 
-				if (player != nullptr)
-				{
+				if (player != nullptr) {
 					player->loadFile(file->getFilePath());
 
-					if (player->getTotalTimeInPcmFrames() == -1)
-					{
+					if (player->getTimeInMiliseconds() == -1) {
 						this->audioTimeSlider->Enabled = false;
-					}
-					else {
-						this->audioTimeSlider->Maximum = player->getTotalTimeInPcmFrames();
+					} else {
+						this->audioTimeSlider->Maximum = player->getTimeInMiliseconds();
 					}
 
-					if (wasPlaying)
-					{
+					if (wasPlaying) {
 						this->playButton->PerformClick();
 					}
 				}
@@ -399,98 +332,81 @@ System::Void SAP::Form1::songListGridView_CellMouseDoubleClick(System::Object^ s
 	}
 }
 
-System::Void SAP::Form1::seekBarUpdate_Tick(System::Object^ sender, System::EventArgs^ e)
-{
-	if (player->paused())
-	{
-		System::Diagnostics::Debug::WriteLine("End of file reached!");
-		this->seekBarUpdate->Enabled = false;
-		this->audioTimeSlider->Value = this->audioTimeSlider->Maximum - 1;
+System::Void SAP::Form1::seekBarUpdate_Tick(System::Object^ sender, System::EventArgs^ e) {
+	if (player == nullptr)
+		return;
+
+	/// \NOTE Need a better way of detecting an end of file event
+	if (player->paused()) {
+		Debug::WriteLine("End of file reached!");
+		seekBarUpdate->Enabled = false;
+		audioTimeSlider->Value = audioTimeSlider->Maximum - 1;
 	}
 
-	if (player != nullptr)
-	{
-		if (!player->paused()) {
-			uint64_t curTime = player->getTimeInMiliseconds();
-			this->songCurrentTimeLabel->Text = (((uint64_t)(curTime / 60000) % 60) < 10 ? ("0" + ((uint64_t)(curTime / 60000) % 60)) : ((uint64_t)(curTime / 60000) % 60).ToString()) + ":" + (((uint64_t)(curTime / 1000) % 60) < 10 ? ("0" + ((uint64_t)(curTime / 1000) % 60)) : ((uint64_t)(curTime / 1000) % 60).ToString());
+	uint64_t currentTime = player->getTimeInSeconds();
+	auto minutes = (currentTime / 60).ToString()->PadLeft(2, L'0');
+	auto seconds = (currentTime % 60).ToString()->PadLeft(2, L'0');
 
-			if (this->audioTimeSlider->Enabled && !userIsInteracting)
-			{
-				if (player->getTimeInPcmFrames() >= 0 && player->getTimeInPcmFrames() < this->audioTimeSlider->Maximum)
-				{
-					this->audioTimeSlider->Value = player->getTimeInPcmFrames();
-				}
-			}
-		}
+	songCurrentTimeLabel->Text = minutes + ":" + seconds;
+
+	if (audioTimeSlider->Enabled &&
+		!userIsInteracting &&
+		player->getTimeInMiliseconds() >= 0 &&
+		player->getTimeInMiliseconds() < audioTimeSlider->Maximum) {
+
+		audioTimeSlider->Value = player->getTimeInMiliseconds();
 	}
 }
 
-System::Void SAP::Form1::audioTimeSlider_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
-{
+System::Void SAP::Form1::audioTimeSlider_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	userIsInteracting = true;
 }
 
-System::Void SAP::Form1::audioTimeSlider_ValueChanged(System::Object^ sender, System::EventArgs^ e)
-{
-	if (this->audioTimeSlider->Value == this->audioTimeSlider->Maximum - 1)
-	{
+System::Void SAP::Form1::audioTimeSlider_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (this->audioTimeSlider->Value == this->audioTimeSlider->Maximum - 1) {
 		//End of file reached, change to next file!
-		if (player != nullptr)
-		{
+		if (player != nullptr) {
 			this->nextButton->PerformClick();
 		}
 	}
 }
 
-System::Void SAP::Form1::audioTimeSlider_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
-{
+System::Void SAP::Form1::audioTimeSlider_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	userIsInteracting = false;
 
-	if (player != nullptr)
-	{
+	if (player != nullptr) {
 
-		if (this->audioTimeSlider->Enabled && !userIsInteracting)
-		{
-			player->setTimeInPcmFrames(this->audioTimeSlider->Value);
+		if (this->audioTimeSlider->Enabled && !userIsInteracting) {
+			player->setTimeInMiliseconds(0);
 		}
 
 	}
 }
 
-System::Void SAP::Form1::previousButton_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	if (player != nullptr)
-	{
+System::Void SAP::Form1::previousButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (player != nullptr) {
 
-		if (player->getTimeInMiliseconds() > 5000)
-		{
-			player->setTimeInPcmFrames(0);
-			if (!wasPlaying)
-			{
-				if (player->getTimeInPcmFrames() >= 0 && player->getTimeInPcmFrames() < this->audioTimeSlider->Maximum)
-				{
-					this->audioTimeSlider->Value = player->getTimeInPcmFrames();
+		if (player->getTimeInMiliseconds() > 5000) {
+			player->setTimeInMiliseconds(0);
+			if (!wasPlaying) {
+				if (player->getTimeInMiliseconds() >= 0 && player->getTimeInMiliseconds() < this->audioTimeSlider->Maximum) {
+					this->audioTimeSlider->Value = player->getTimeInMiliseconds();
 				}
 			}
 			return;
 		}
 
-		if (repeatActive)
-		{
+		if (repeatActive) {
 
-			player->setTimeInPcmFrames(0);
-			if (!wasPlaying)
-			{
-				if (player->getTimeInPcmFrames() >= 0 && player->getTimeInPcmFrames() < this->audioTimeSlider->Maximum)
-				{
-					this->audioTimeSlider->Value = player->getTimeInPcmFrames();
+			player->setTimeInMiliseconds(0);
+			if (!wasPlaying) {
+				if (player->getTimeInMiliseconds() >= 0 && player->getTimeInMiliseconds() < this->audioTimeSlider->Maximum) {
+					this->audioTimeSlider->Value = player->getTimeInMiliseconds();
 				}
 			}
 
-		}
-		else {
-			if (shuffleActive)
-			{
+		} else {
+			if (shuffleActive) {
 				System::Random^ r = gcnew System::Random();
 
 				loading = true;
@@ -498,10 +414,8 @@ System::Void SAP::Form1::previousButton_Click(System::Object^ sender, System::Ev
 				loading = false;
 				songLoadMetadata();
 				songListGridView_CellMouseDoubleClick(nullptr, nullptr);
-			}
-			else {
-				if (this->songListGridView->CurrentCell->RowIndex - 1 >= 0)
-				{
+			} else {
+				if (this->songListGridView->CurrentCell->RowIndex - 1 >= 0) {
 					loading = true;
 					this->songListGridView->CurrentCell = this->songListGridView[0, this->songListGridView->CurrentCell->RowIndex - 1];
 					loading = false;
@@ -513,25 +427,18 @@ System::Void SAP::Form1::previousButton_Click(System::Object^ sender, System::Ev
 	}
 }
 
-System::Void SAP::Form1::nextButton_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	if (repeatActive)
-	{
-		if (player != nullptr)
-		{
-			player->setTimeInPcmFrames(0);
-			if (!wasPlaying)
-			{
-				if (player->getTimeInPcmFrames() >= 0 && player->getTimeInPcmFrames() < this->audioTimeSlider->Maximum)
-				{
-					this->audioTimeSlider->Value = player->getTimeInPcmFrames();
+System::Void SAP::Form1::nextButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (repeatActive) {
+		if (player != nullptr) {
+			player->setTimeInMiliseconds(0);
+			if (!wasPlaying) {
+				if (player->getTimeInMiliseconds() >= 0 && player->getTimeInMiliseconds() < this->audioTimeSlider->Maximum) {
+					this->audioTimeSlider->Value = player->getTimeInMiliseconds();
 				}
 			}
 		}
-	}
-	else {
-		if (shuffleActive)
-		{
+	} else {
+		if (shuffleActive) {
 			System::Random^ r = gcnew System::Random();
 
 			loading = true;
@@ -539,10 +446,8 @@ System::Void SAP::Form1::nextButton_Click(System::Object^ sender, System::EventA
 			loading = false;
 			songLoadMetadata();
 			songListGridView_CellMouseDoubleClick(nullptr, nullptr);
-		}
-		else {
-			if (this->songListGridView->CurrentCell->RowIndex + 1 < this->songListGridView->RowCount)
-			{
+		} else {
+			if (this->songListGridView->CurrentCell->RowIndex + 1 < this->songListGridView->RowCount) {
 				loading = true;
 				this->songListGridView->CurrentCell = this->songListGridView[0, this->songListGridView->CurrentCell->RowIndex + 1];
 				loading = false;
@@ -553,27 +458,21 @@ System::Void SAP::Form1::nextButton_Click(System::Object^ sender, System::EventA
 	}
 }
 
-System::Void SAP::Form1::audioVolumeSlider_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
-{
+System::Void SAP::Form1::audioVolumeSlider_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	userIsInteracting = true;
 }
 
-System::Void SAP::Form1::audioVolumeSlider_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
-{
-	if (userIsInteracting)
-	{
-		if (player != nullptr)
-		{
+System::Void SAP::Form1::audioVolumeSlider_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	if (userIsInteracting) {
+		if (player != nullptr) {
 			player->setVolume(((float)(this->audioVolumeSlider->Value)) / 100);
 		}
 		userIsInteracting = false;
 	}
 }
 
-System::Void SAP::Form1::lyricsUpdateTimer_Tick(System::Object^ sender, System::EventArgs^ e)
-{
-	if (lyrics->getIsSynced())
-	{
+System::Void SAP::Form1::lyricsUpdateTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+	if (lyrics->getIsSynced()) {
 		lyrics->updateActives(player->getTimeInMiliseconds(), this->songLRCList);
 	}
 }

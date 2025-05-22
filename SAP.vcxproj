@@ -123,8 +123,9 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -150,7 +151,7 @@
     </ClInclude>
     <ClInclude Include="Lyrics.h" />
     <ClInclude Include="LyricsLine.h" />
-    <ClInclude Include="Miniaudio.h" />
+    <ClInclude Include="MiniaudioDriver.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Settings.h">
@@ -166,7 +167,7 @@
     <ClCompile Include="Licenses.cpp" />
     <ClCompile Include="Lyrics.cpp" />
     <ClCompile Include="LyricsLine.cpp" />
-    <ClCompile Include="miniaudio.cpp" />
+    <ClCompile Include="MiniaudioDriver.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Source.cpp" />
