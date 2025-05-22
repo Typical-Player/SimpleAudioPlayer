@@ -3,7 +3,6 @@ Simple audio player written in C++/CLI using Windows Forms for GUI
 
 # Dependencies
 - Miniaudio [Link to repo](https://github.com/mackron/miniaudio)
-  (Note: Miniaudio is slightly tweaked to compile with the `/clr` option (I just renamed miniaudio.c to miniaudio.cpp))
 - TagLib [Link to repo](https://github.com/taglib/taglib)
 
 Note: You dont need to build and link these dependencies, see below.
