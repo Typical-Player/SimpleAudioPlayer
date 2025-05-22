@@ -15,20 +15,16 @@ namespace SAP {
 	using namespace System::Drawing;
 	using namespace System::Diagnostics;
 
-	public ref class Form1 : public System::Windows::Forms::Form
-	{
+	public ref class MainForm : public System::Windows::Forms::Form {
 	public:
-		Form1(void)
-		{
+		MainForm(void) {
 			InitializeComponent();
 		}
 
 	protected:
 
-		~Form1()
-		{
-			if (components)
-			{
+		~MainForm() {
+			if (components) {
 				delete components;
 			}
 		}
@@ -77,10 +73,9 @@ namespace SAP {
 	private: System::Windows::Forms::Timer^ lyricsUpdateTimer;
 	private: System::ComponentModel::IContainer^ components;
 #pragma region Windows Form Designer generated code
-		   void InitializeComponent(void)
-		   {
+		   void InitializeComponent(void) {
 			   this->components = (gcnew System::ComponentModel::Container());
-			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
+			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			   System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			   System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			   this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
@@ -169,22 +164,22 @@ namespace SAP {
 			   this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
 			   this->fileToolStripMenuItem->Size = System::Drawing::Size(37, 20);
 			   this->fileToolStripMenuItem->Text = L"File";
-			   this->fileToolStripMenuItem->DropDownClosed += gcnew System::EventHandler(this, &Form1::fileToolStripMenuItem_DropDownClosed);
-			   this->fileToolStripMenuItem->DropDownOpened += gcnew System::EventHandler(this, &Form1::fileToolStripMenuItem_DropDownOpened);
+			   this->fileToolStripMenuItem->DropDownClosed += gcnew System::EventHandler(this, &MainForm::fileToolStripMenuItem_DropDownClosed);
+			   this->fileToolStripMenuItem->DropDownOpened += gcnew System::EventHandler(this, &MainForm::fileToolStripMenuItem_DropDownOpened);
 			   // 
 			   // quickImportToolStripMenuItem
 			   // 
 			   this->quickImportToolStripMenuItem->Name = L"quickImportToolStripMenuItem";
 			   this->quickImportToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			   this->quickImportToolStripMenuItem->Text = L"Quick Import";
-			   this->quickImportToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::quickImportToolStripMenuItem_Click);
+			   this->quickImportToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::quickImportToolStripMenuItem_Click);
 			   // 
 			   // settingsToolStripMenuItem
 			   // 
 			   this->settingsToolStripMenuItem->Name = L"settingsToolStripMenuItem";
 			   this->settingsToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			   this->settingsToolStripMenuItem->Text = L"Settings";
-			   this->settingsToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::settingsToolStripMenuItem_Click);
+			   this->settingsToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::settingsToolStripMenuItem_Click);
 			   // 
 			   // toolStripSeparator2
 			   // 
@@ -196,7 +191,7 @@ namespace SAP {
 			   this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
 			   this->exitToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			   this->exitToolStripMenuItem->Text = L"Exit";
-			   this->exitToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::exitToolStripMenuItem_Click);
+			   this->exitToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::exitToolStripMenuItem_Click);
 			   // 
 			   // sAPSimpleAudioPlayerToolStripMenuItem
 			   // 
@@ -209,22 +204,22 @@ namespace SAP {
 			   this->sAPSimpleAudioPlayerToolStripMenuItem->Name = L"sAPSimpleAudioPlayerToolStripMenuItem";
 			   this->sAPSimpleAudioPlayerToolStripMenuItem->Size = System::Drawing::Size(156, 20);
 			   this->sAPSimpleAudioPlayerToolStripMenuItem->Text = L"SAP (Simple Audio Player)";
-			   this->sAPSimpleAudioPlayerToolStripMenuItem->DropDownClosed += gcnew System::EventHandler(this, &Form1::sAPSimpleAudioPlayerToolStripMenuItem_DropDownClosed);
-			   this->sAPSimpleAudioPlayerToolStripMenuItem->DropDownOpened += gcnew System::EventHandler(this, &Form1::sAPSimpleAudioPlayerToolStripMenuItem_DropDownOpened);
+			   this->sAPSimpleAudioPlayerToolStripMenuItem->DropDownClosed += gcnew System::EventHandler(this, &MainForm::sAPSimpleAudioPlayerToolStripMenuItem_DropDownClosed);
+			   this->sAPSimpleAudioPlayerToolStripMenuItem->DropDownOpened += gcnew System::EventHandler(this, &MainForm::sAPSimpleAudioPlayerToolStripMenuItem_DropDownOpened);
 			   // 
 			   // aboutSAPToolStripMenuItem
 			   // 
 			   this->aboutSAPToolStripMenuItem->Name = L"aboutSAPToolStripMenuItem";
 			   this->aboutSAPToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			   this->aboutSAPToolStripMenuItem->Text = L"About SAP";
-			   this->aboutSAPToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::aboutSAPToolStripMenuItem_Click);
+			   this->aboutSAPToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::aboutSAPToolStripMenuItem_Click);
 			   // 
 			   // licensesToolStripMenuItem
 			   // 
 			   this->licensesToolStripMenuItem->Name = L"licensesToolStripMenuItem";
 			   this->licensesToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			   this->licensesToolStripMenuItem->Text = L"Licenses";
-			   this->licensesToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::licensesToolStripMenuItem_Click);
+			   this->licensesToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::licensesToolStripMenuItem_Click);
 			   // 
 			   // tableLayoutPanel1
 			   // 
@@ -357,9 +352,9 @@ namespace SAP {
 			   this->audioTimeSlider->Size = System::Drawing::Size(834, 24);
 			   this->audioTimeSlider->TabIndex = 0;
 			   this->audioTimeSlider->TickStyle = System::Windows::Forms::TickStyle::None;
-			   this->audioTimeSlider->ValueChanged += gcnew System::EventHandler(this, &Form1::audioTimeSlider_ValueChanged);
-			   this->audioTimeSlider->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &Form1::audioTimeSlider_MouseDown);
-			   this->audioTimeSlider->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &Form1::audioTimeSlider_MouseUp);
+			   this->audioTimeSlider->ValueChanged += gcnew System::EventHandler(this, &MainForm::audioTimeSlider_ValueChanged);
+			   this->audioTimeSlider->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::audioTimeSlider_MouseDown);
+			   this->audioTimeSlider->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::audioTimeSlider_MouseUp);
 			   // 
 			   // flowLayoutPanel1
 			   // 
@@ -391,9 +386,9 @@ namespace SAP {
 			   this->previousButton->Size = System::Drawing::Size(30, 23);
 			   this->previousButton->TabIndex = 0;
 			   this->previousButton->UseVisualStyleBackColor = false;
-			   this->previousButton->Click += gcnew System::EventHandler(this, &Form1::previousButton_Click);
-			   this->previousButton->MouseEnter += gcnew System::EventHandler(this, &Form1::reactEventBtnHoverEnter);
-			   this->previousButton->MouseLeave += gcnew System::EventHandler(this, &Form1::reactEventBtnHoverLeave);
+			   this->previousButton->Click += gcnew System::EventHandler(this, &MainForm::previousButton_Click);
+			   this->previousButton->MouseEnter += gcnew System::EventHandler(this, &MainForm::reactEventBtnHoverEnter);
+			   this->previousButton->MouseLeave += gcnew System::EventHandler(this, &MainForm::reactEventBtnHoverLeave);
 			   // 
 			   // playButton
 			   // 
@@ -408,9 +403,9 @@ namespace SAP {
 			   this->playButton->Size = System::Drawing::Size(30, 23);
 			   this->playButton->TabIndex = 1;
 			   this->playButton->UseVisualStyleBackColor = false;
-			   this->playButton->Click += gcnew System::EventHandler(this, &Form1::playButton_Click);
-			   this->playButton->MouseEnter += gcnew System::EventHandler(this, &Form1::reactEventBtnHoverEnter);
-			   this->playButton->MouseLeave += gcnew System::EventHandler(this, &Form1::reactEventBtnHoverLeave);
+			   this->playButton->Click += gcnew System::EventHandler(this, &MainForm::playButton_Click);
+			   this->playButton->MouseEnter += gcnew System::EventHandler(this, &MainForm::reactEventBtnHoverEnter);
+			   this->playButton->MouseLeave += gcnew System::EventHandler(this, &MainForm::reactEventBtnHoverLeave);
 			   // 
 			   // nextButton
 			   // 
@@ -425,9 +420,9 @@ namespace SAP {
 			   this->nextButton->Size = System::Drawing::Size(30, 23);
 			   this->nextButton->TabIndex = 2;
 			   this->nextButton->UseVisualStyleBackColor = false;
-			   this->nextButton->Click += gcnew System::EventHandler(this, &Form1::nextButton_Click);
-			   this->nextButton->MouseEnter += gcnew System::EventHandler(this, &Form1::reactEventBtnHoverEnter);
-			   this->nextButton->MouseLeave += gcnew System::EventHandler(this, &Form1::reactEventBtnHoverLeave);
+			   this->nextButton->Click += gcnew System::EventHandler(this, &MainForm::nextButton_Click);
+			   this->nextButton->MouseEnter += gcnew System::EventHandler(this, &MainForm::reactEventBtnHoverEnter);
+			   this->nextButton->MouseLeave += gcnew System::EventHandler(this, &MainForm::reactEventBtnHoverLeave);
 			   // 
 			   // splitter1
 			   // 
@@ -451,9 +446,9 @@ namespace SAP {
 			   this->shuffleToggleBtn->Size = System::Drawing::Size(30, 23);
 			   this->shuffleToggleBtn->TabIndex = 4;
 			   this->shuffleToggleBtn->UseVisualStyleBackColor = false;
-			   this->shuffleToggleBtn->Click += gcnew System::EventHandler(this, &Form1::shuffleToggleBtn_Click);
-			   this->shuffleToggleBtn->MouseEnter += gcnew System::EventHandler(this, &Form1::reactEventBtnHoverEnter);
-			   this->shuffleToggleBtn->MouseLeave += gcnew System::EventHandler(this, &Form1::reactEventBtnHoverLeave);
+			   this->shuffleToggleBtn->Click += gcnew System::EventHandler(this, &MainForm::shuffleToggleBtn_Click);
+			   this->shuffleToggleBtn->MouseEnter += gcnew System::EventHandler(this, &MainForm::reactEventBtnHoverEnter);
+			   this->shuffleToggleBtn->MouseLeave += gcnew System::EventHandler(this, &MainForm::reactEventBtnHoverLeave);
 			   // 
 			   // repeatToggleBtn
 			   // 
@@ -468,9 +463,9 @@ namespace SAP {
 			   this->repeatToggleBtn->Size = System::Drawing::Size(30, 23);
 			   this->repeatToggleBtn->TabIndex = 5;
 			   this->repeatToggleBtn->UseVisualStyleBackColor = false;
-			   this->repeatToggleBtn->Click += gcnew System::EventHandler(this, &Form1::repeatToggleBtn_Click);
-			   this->repeatToggleBtn->MouseEnter += gcnew System::EventHandler(this, &Form1::reactEventBtnHoverEnter);
-			   this->repeatToggleBtn->MouseLeave += gcnew System::EventHandler(this, &Form1::reactEventBtnHoverLeave);
+			   this->repeatToggleBtn->Click += gcnew System::EventHandler(this, &MainForm::repeatToggleBtn_Click);
+			   this->repeatToggleBtn->MouseEnter += gcnew System::EventHandler(this, &MainForm::reactEventBtnHoverEnter);
+			   this->repeatToggleBtn->MouseLeave += gcnew System::EventHandler(this, &MainForm::reactEventBtnHoverLeave);
 			   // 
 			   // flowLayoutPanel2
 			   // 
@@ -521,8 +516,8 @@ namespace SAP {
 			   this->audioVolumeSlider->TabIndex = 2;
 			   this->audioVolumeSlider->TickStyle = System::Windows::Forms::TickStyle::None;
 			   this->audioVolumeSlider->Value = 100;
-			   this->audioVolumeSlider->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &Form1::audioVolumeSlider_MouseDown);
-			   this->audioVolumeSlider->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &Form1::audioVolumeSlider_MouseUp);
+			   this->audioVolumeSlider->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::audioVolumeSlider_MouseDown);
+			   this->audioVolumeSlider->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::audioVolumeSlider_MouseUp);
 			   // 
 			   // tableLayoutPanel5
 			   // 
@@ -697,7 +692,7 @@ namespace SAP {
 			   this->songListGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			   this->songListGridView->Size = System::Drawing::Size(830, 349);
 			   this->songListGridView->TabIndex = 3;
-			   this->songListGridView->CellMouseDoubleClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &Form1::songListGridView_CellMouseDoubleClick);
+			   this->songListGridView->CellMouseDoubleClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &MainForm::songListGridView_CellMouseDoubleClick);
 			   // 
 			   // songListColumnTitle
 			   // 
@@ -735,12 +730,12 @@ namespace SAP {
 			   // seekBarUpdate
 			   // 
 			   this->seekBarUpdate->Interval = 800;
-			   this->seekBarUpdate->Tick += gcnew System::EventHandler(this, &Form1::seekBarUpdate_Tick);
+			   this->seekBarUpdate->Tick += gcnew System::EventHandler(this, &MainForm::seekBarUpdate_Tick);
 			   // 
 			   // lyricsUpdateTimer
 			   // 
 			   this->lyricsUpdateTimer->Interval = 50;
-			   this->lyricsUpdateTimer->Tick += gcnew System::EventHandler(this, &Form1::lyricsUpdateTimer_Tick);
+			   this->lyricsUpdateTimer->Tick += gcnew System::EventHandler(this, &MainForm::lyricsUpdateTimer_Tick);
 			   // 
 			   // Form1
 			   // 

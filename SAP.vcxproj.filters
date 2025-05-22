@@ -5,16 +5,25 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Icons">
       <UniqueIdentifier>{b2eb8d87-6fad-4875-9c41-101402284919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Native">
+      <UniqueIdentifier>{ed4b36ab-166b-4ddc-ae6a-d4e5693b2b6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Native Interfaces">
+      <UniqueIdentifier>{d73032fd-9f33-4c3b-9754-dac1c3706935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Forms Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6c423b55-e6f8-4b0a-b748-b244dfd5ecad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -23,54 +32,42 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Form1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="File.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MainForm.h">
+      <Filter>Forms Files</Filter>
     </ClInclude>
     <ClInclude Include="About.h">
-      <Filter>Header Files</Filter>
+      <Filter>Forms Files</Filter>
     </ClInclude>
     <ClInclude Include="Licenses.h">
-      <Filter>Header Files</Filter>
+      <Filter>Forms Files</Filter>
     </ClInclude>
     <ClInclude Include="Settings.h">
-      <Filter>Header Files</Filter>
+      <Filter>Forms Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniaudioDriver.h">
+      <Filter>Native</Filter>
+    </ClInclude>
+    <ClInclude Include="TaglibDriver.h">
+      <Filter>Native</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
+      <Filter>Native Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="Lyrics.h">
+    <ClInclude Include="File.h">
+      <Filter>Native Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LyricsLine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TaglibDriver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MiniaudioDriver.h">
+    <ClInclude Include="Lyrics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="File.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Settings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="About.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Licenses.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lyrics.cpp">
@@ -82,17 +79,29 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Form1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MiniaudioDriver.cpp">
+      <Filter>Native</Filter>
     </ClCompile>
     <ClCompile Include="TaglibDriver.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Native</Filter>
     </ClCompile>
-    <ClCompile Include="MiniaudioDriver.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Player.cpp">
+      <Filter>Native Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
+      <Filter>Native Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="About.cpp">
+      <Filter>Forms Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainForm.cpp">
+      <Filter>Forms Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Forms Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Licenses.cpp">
+      <Filter>Forms Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

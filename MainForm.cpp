@@ -1,40 +1,40 @@
-#include "Form1.h"
+#include "MainForm.h"
 
-System::Void SAP::Form1::fileToolStripMenuItem_DropDownOpened(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::fileToolStripMenuItem_DropDownOpened(System::Object^ sender, System::EventArgs^ e) {
 	this->fileToolStripMenuItem->ForeColor = System::Drawing::Color::Black;
 }
 
-System::Void SAP::Form1::fileToolStripMenuItem_DropDownClosed(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::fileToolStripMenuItem_DropDownClosed(System::Object^ sender, System::EventArgs^ e) {
 	this->fileToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 }
 
-System::Void SAP::Form1::sAPSimpleAudioPlayerToolStripMenuItem_DropDownClosed(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::sAPSimpleAudioPlayerToolStripMenuItem_DropDownClosed(System::Object^ sender, System::EventArgs^ e) {
 	this->sAPSimpleAudioPlayerToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 }
 
-System::Void SAP::Form1::sAPSimpleAudioPlayerToolStripMenuItem_DropDownOpened(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::sAPSimpleAudioPlayerToolStripMenuItem_DropDownOpened(System::Object^ sender, System::EventArgs^ e) {
 	this->sAPSimpleAudioPlayerToolStripMenuItem->ForeColor = System::Drawing::Color::Black;
 }
 
-System::Void SAP::Form1::reactEventBtnHoverEnter(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::reactEventBtnHoverEnter(System::Object^ sender, System::EventArgs^ e) {
 	auto snd = cli::safe_cast<System::Windows::Forms::Button^>(sender);
 	if (snd != nullptr) {
 		snd->BackColor = System::Drawing::Color::FromArgb(16, 16, 16);
 	}
 }
 
-System::Void SAP::Form1::reactEventBtnHoverLeave(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::reactEventBtnHoverLeave(System::Object^ sender, System::EventArgs^ e) {
 	auto snd = cli::safe_cast<System::Windows::Forms::Button^>(sender);
 	if (snd != nullptr) {
 		snd->BackColor = System::Drawing::Color::Transparent;
 	}
 }
 
-System::Void SAP::Form1::exitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::exitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
 
-System::Void SAP::Form1::quickImportToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::quickImportToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (folderLoaded) {
 		System::Windows::Forms::MessageBox::Show("You already have a folder selected! Reopen the app to select another folder", "Folder already loaded", System::Windows::Forms::MessageBoxButtons::OK);
 		return;
@@ -65,7 +65,7 @@ System::Void SAP::Form1::quickImportToolStripMenuItem_Click(System::Object^ send
 	}
 }
 
-void SAP::Form1::updateColor(System::Windows::Forms::Control^ c) {
+void SAP::MainForm::updateColor(System::Windows::Forms::Control^ c) {
 	c->BackColor = baseColor;
 	c->ForeColor = txtColor;
 	for each (System::Object ^ subCtr in c->Controls) {
@@ -76,7 +76,7 @@ void SAP::Form1::updateColor(System::Windows::Forms::Control^ c) {
 	}
 }
 
-void SAP::Form1::updateUnique() {
+void SAP::MainForm::updateUnique() {
 	this->BackColor = shadeDarkColor;
 	this->tableLayoutPanel4->BackColor = shadeDarkerColor;
 	this->songTitleLabel->BackColor = shadeDarkerColor;
@@ -96,7 +96,7 @@ void SAP::Form1::updateUnique() {
 	this->songListGridView->GridColor = txtColor;
 }
 
-void SAP::Form1::loadColor(int colorId) {
+void SAP::MainForm::loadColor(int colorId) {
 	switch (colorId) {
 	case 0:
 		//Default
@@ -195,7 +195,7 @@ void SAP::Form1::loadColor(int colorId) {
 	}
 }
 
-System::Void SAP::Form1::settingsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::settingsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	SAP::Settings^ settingsForm = gcnew SAP::Settings(currentTheme);
 	settingsForm->ShowDialog();
 	Diagnostics::Debug::WriteLine("MainForm: " + settingsForm->SettingsThemeValue);
@@ -204,18 +204,18 @@ System::Void SAP::Form1::settingsToolStripMenuItem_Click(System::Object^ sender,
 	loadColor(currentTheme);
 }
 
-System::Void SAP::Form1::licensesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::licensesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	SAP::Licenses^ licenseForm = gcnew SAP::Licenses;
 	licenseForm->ShowDialog();
 }
 
-System::Void SAP::Form1::aboutSAPToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::aboutSAPToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	SAP::About^ aboutForm = gcnew SAP::About;
 	aboutForm->ShowDialog();
 }
 
-System::Void SAP::Form1::shuffleToggleBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
+System::Void SAP::MainForm::shuffleToggleBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 	if (!shuffleActive) {
 		this->shuffleToggleBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"shuffleON")));
 		this->shuffleActive = true;
@@ -225,8 +225,8 @@ System::Void SAP::Form1::shuffleToggleBtn_Click(System::Object^ sender, System::
 	}
 }
 
-System::Void SAP::Form1::repeatToggleBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
+System::Void SAP::MainForm::repeatToggleBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 	if (!repeatActive) {
 		this->repeatToggleBtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"repeatON")));
 		this->repeatActive = true;
@@ -236,7 +236,7 @@ System::Void SAP::Form1::repeatToggleBtn_Click(System::Object^ sender, System::E
 	}
 }
 
-void SAP::Form1::songLoadMetadata() {
+void SAP::MainForm::songLoadMetadata() {
 	if (!loading) {
 		File^ file = static_cast<SAP::File^>(this->songListGridView->Rows[this->songListGridView->CurrentCell->RowIndex]->DataBoundItem);
 
@@ -252,7 +252,7 @@ void SAP::Form1::songLoadMetadata() {
 				if (img != nullptr) {
 					this->songPicBox->Image = img;
 				} else {
-					System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
+					System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 					this->songPicBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"songPicBox.Image")));
 				}
 				file->getLyricsSynced(lyrics);
@@ -272,8 +272,8 @@ void SAP::Form1::songLoadMetadata() {
 	}
 }
 
-System::Void SAP::Form1::playButton_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
+System::Void SAP::MainForm::playButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 	if (player == nullptr) {
 		player = gcnew Player();
 	}
@@ -294,7 +294,7 @@ System::Void SAP::Form1::playButton_Click(System::Object^ sender, System::EventA
 	}
 }
 
-System::Void SAP::Form1::songListGridView_CellMouseDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^ e) {
+System::Void SAP::MainForm::songListGridView_CellMouseDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^ e) {
 	if (!loading) {
 		songLoadMetadata();
 		File^ file = static_cast<SAP::File^>(this->songListGridView->Rows[this->songListGridView->CurrentCell->RowIndex]->DataBoundItem);
@@ -332,7 +332,7 @@ System::Void SAP::Form1::songListGridView_CellMouseDoubleClick(System::Object^ s
 	}
 }
 
-System::Void SAP::Form1::seekBarUpdate_Tick(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::seekBarUpdate_Tick(System::Object^ sender, System::EventArgs^ e) {
 	if (player == nullptr)
 		return;
 
@@ -358,11 +358,11 @@ System::Void SAP::Form1::seekBarUpdate_Tick(System::Object^ sender, System::Even
 	}
 }
 
-System::Void SAP::Form1::audioTimeSlider_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+System::Void SAP::MainForm::audioTimeSlider_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	userIsInteracting = true;
 }
 
-System::Void SAP::Form1::audioTimeSlider_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::audioTimeSlider_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (this->audioTimeSlider->Value == this->audioTimeSlider->Maximum - 1) {
 		//End of file reached, change to next file!
 		if (player != nullptr) {
@@ -371,7 +371,7 @@ System::Void SAP::Form1::audioTimeSlider_ValueChanged(System::Object^ sender, Sy
 	}
 }
 
-System::Void SAP::Form1::audioTimeSlider_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+System::Void SAP::MainForm::audioTimeSlider_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	userIsInteracting = false;
 
 	if (player != nullptr) {
@@ -383,7 +383,7 @@ System::Void SAP::Form1::audioTimeSlider_MouseUp(System::Object^ sender, System:
 	}
 }
 
-System::Void SAP::Form1::previousButton_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::previousButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (player != nullptr) {
 
 		if (player->getTimeInMiliseconds() > 5000) {
@@ -427,7 +427,7 @@ System::Void SAP::Form1::previousButton_Click(System::Object^ sender, System::Ev
 	}
 }
 
-System::Void SAP::Form1::nextButton_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::nextButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (repeatActive) {
 		if (player != nullptr) {
 			player->setTimeInMiliseconds(0);
@@ -458,11 +458,11 @@ System::Void SAP::Form1::nextButton_Click(System::Object^ sender, System::EventA
 	}
 }
 
-System::Void SAP::Form1::audioVolumeSlider_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+System::Void SAP::MainForm::audioVolumeSlider_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	userIsInteracting = true;
 }
 
-System::Void SAP::Form1::audioVolumeSlider_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+System::Void SAP::MainForm::audioVolumeSlider_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	if (userIsInteracting) {
 		if (player != nullptr) {
 			player->setVolume(((float)(this->audioVolumeSlider->Value)) / 100);
@@ -471,7 +471,7 @@ System::Void SAP::Form1::audioVolumeSlider_MouseUp(System::Object^ sender, Syste
 	}
 }
 
-System::Void SAP::Form1::lyricsUpdateTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
+System::Void SAP::MainForm::lyricsUpdateTimer_Tick(System::Object^ sender, System::EventArgs^ e) {
 	if (lyrics->getIsSynced()) {
 		lyrics->updateActives(player->getTimeInMiliseconds(), this->songLRCList);
 	}
