@@ -15,13 +15,14 @@ namespace Native {
 		bool enableInmersiveDarkMode();
 		bool enableCustomBorderColor();
 		bool enableRoundedCorners();
+		bool enableTransitionAnimations();
 
 		bool DWMCompositionIsEnabled();
 
 		LRESULT windowHitTest(LPARAM wndProcParam);
 	private:
 		MARGINS m_windowMargins;
-		HWND m_hwnd;
+		HWND m_handle;
 	};
 }
 #endif // !_WINDOWSDWMINTEGRATION_H_

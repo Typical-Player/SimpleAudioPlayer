@@ -77,6 +77,8 @@ namespace SAP {
 	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel3;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button3;
 
 
 
@@ -90,8 +92,8 @@ namespace SAP {
 		   void InitializeComponent(void) {
 			   this->components = (gcnew System::ComponentModel::Container());
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
-			   System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			   System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			   System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			   System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			   this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			   this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->quickImportToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -138,6 +140,8 @@ namespace SAP {
 			   this->panel1 = (gcnew System::Windows::Forms::Panel());
 			   this->flowLayoutPanel4 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			   this->button1 = (gcnew System::Windows::Forms::Button());
+			   this->button2 = (gcnew System::Windows::Forms::Button());
+			   this->button3 = (gcnew System::Windows::Forms::Button());
 			   this->flowLayoutPanel3 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			   this->label1 = (gcnew System::Windows::Forms::Label());
 			   this->menuStrip1->SuspendLayout();
@@ -673,33 +677,33 @@ namespace SAP {
 			   this->songListGridView->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			   this->songListGridView->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleVertical;
 			   this->songListGridView->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			   dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			   dataGridViewCellStyle5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+			   dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			   dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			   dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   dataGridViewCellStyle5->ForeColor = System::Drawing::Color::White;
-			   dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(16)),
+			   dataGridViewCellStyle1->ForeColor = System::Drawing::Color::White;
+			   dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(16)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(16)), static_cast<System::Int32>(static_cast<System::Byte>(16)));
-			   dataGridViewCellStyle5->SelectionForeColor = System::Drawing::Color::White;
-			   dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			   this->songListGridView->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			   dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::White;
+			   dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			   this->songListGridView->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			   this->songListGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			   this->songListGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				   this->songListColumnTitle,
 					   this->songListColumnArtist, this->songColumnListAlbum, this->songColumnListDuration
 			   });
-			   dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			   dataGridViewCellStyle6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+			   dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			   dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			   dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   dataGridViewCellStyle6->ForeColor = System::Drawing::Color::White;
-			   dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(16)),
+			   dataGridViewCellStyle2->ForeColor = System::Drawing::Color::White;
+			   dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(16)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(16)), static_cast<System::Int32>(static_cast<System::Byte>(16)));
-			   dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::White;
-			   dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			   this->songListGridView->DefaultCellStyle = dataGridViewCellStyle6;
+			   dataGridViewCellStyle2->SelectionForeColor = System::Drawing::Color::White;
+			   dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			   this->songListGridView->DefaultCellStyle = dataGridViewCellStyle2;
 			   this->songListGridView->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->songListGridView->GridColor = System::Drawing::Color::White;
 			   this->songListGridView->Location = System::Drawing::Point(0, 0);
@@ -775,11 +779,13 @@ namespace SAP {
 			   // flowLayoutPanel4
 			   // 
 			   this->flowLayoutPanel4->Controls->Add(this->button1);
+			   this->flowLayoutPanel4->Controls->Add(this->button2);
+			   this->flowLayoutPanel4->Controls->Add(this->button3);
 			   this->flowLayoutPanel4->Dock = System::Windows::Forms::DockStyle::Right;
 			   this->flowLayoutPanel4->FlowDirection = System::Windows::Forms::FlowDirection::RightToLeft;
-			   this->flowLayoutPanel4->Location = System::Drawing::Point(879, 0);
+			   this->flowLayoutPanel4->Location = System::Drawing::Point(866, 0);
 			   this->flowLayoutPanel4->Name = L"flowLayoutPanel4";
-			   this->flowLayoutPanel4->Size = System::Drawing::Size(217, 25);
+			   this->flowLayoutPanel4->Size = System::Drawing::Size(230, 25);
 			   this->flowLayoutPanel4->TabIndex = 1;
 			   // 
 			   // button1
@@ -789,7 +795,7 @@ namespace SAP {
 			   this->button1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 6.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->button1->ForeColor = System::Drawing::Color::White;
-			   this->button1->Location = System::Drawing::Point(142, 0);
+			   this->button1->Location = System::Drawing::Point(155, 0);
 			   this->button1->Margin = System::Windows::Forms::Padding(0);
 			   this->button1->Name = L"button1";
 			   this->button1->Size = System::Drawing::Size(75, 25);
@@ -797,6 +803,38 @@ namespace SAP {
 			   this->button1->Text = L"Close";
 			   this->button1->UseVisualStyleBackColor = true;
 			   this->button1->Click += gcnew System::EventHandler(this, &MainForm::button1_Click);
+			   // 
+			   // button2
+			   // 
+			   this->button2->FlatAppearance->BorderSize = 0;
+			   this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->button2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 6.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->button2->ForeColor = System::Drawing::Color::White;
+			   this->button2->Location = System::Drawing::Point(80, 0);
+			   this->button2->Margin = System::Windows::Forms::Padding(0);
+			   this->button2->Name = L"button2";
+			   this->button2->Size = System::Drawing::Size(75, 25);
+			   this->button2->TabIndex = 1;
+			   this->button2->Text = L"Maximize";
+			   this->button2->UseVisualStyleBackColor = true;
+			   this->button2->Click += gcnew System::EventHandler(this, &MainForm::button2_Click);
+			   // 
+			   // button3
+			   // 
+			   this->button3->FlatAppearance->BorderSize = 0;
+			   this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->button3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 6.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->button3->ForeColor = System::Drawing::Color::White;
+			   this->button3->Location = System::Drawing::Point(5, 0);
+			   this->button3->Margin = System::Windows::Forms::Padding(0);
+			   this->button3->Name = L"button3";
+			   this->button3->Size = System::Drawing::Size(75, 25);
+			   this->button3->TabIndex = 2;
+			   this->button3->Text = L"Minimize";
+			   this->button3->UseVisualStyleBackColor = true;
+			   this->button3->Click += gcnew System::EventHandler(this, &MainForm::button3_Click);
 			   // 
 			   // flowLayoutPanel3
 			   // 
@@ -1011,6 +1049,16 @@ namespace SAP {
 	}
 	private: System::Void panel1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		dragging = false;
+	}
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->WindowState = FormWindowState::Minimized;
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->WindowState != FormWindowState::Maximized) {
+			this->WindowState = FormWindowState::Maximized;
+		} else {
+			this->WindowState = FormWindowState::Normal;
+		}
 	}
 	};
 }

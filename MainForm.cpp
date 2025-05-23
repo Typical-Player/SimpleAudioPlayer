@@ -50,7 +50,7 @@ System::Void SAP::MainForm::quickImportToolStripMenuItem_Click(System::Object^ s
 
 		loading = true;
 		this->songTitleLabel->Text = "Loading...";
-		for each(String ^ file in files) {
+		for each (String ^ file in files) {
 			File^ f = gcnew File(file);
 
 			if (f->getIsValid()) {
@@ -70,7 +70,7 @@ System::Void SAP::MainForm::quickImportToolStripMenuItem_Click(System::Object^ s
 void SAP::MainForm::updateColor(System::Windows::Forms::Control^ c) {
 	c->BackColor = baseColor;
 	c->ForeColor = txtColor;
-	for each(System::Object ^ subCtr in c->Controls) {
+	for each (System::Object ^ subCtr in c->Controls) {
 		auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 		if (control != nullptr) {
 			updateColor(control);
@@ -107,7 +107,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkColor = System::Drawing::Color::FromArgb(25, 25, 25);
 		shadeDarkerColor = System::Drawing::Color::FromArgb(16, 16, 16);
 		txtColor = System::Drawing::Color::White;
-		for each(System::Object ^ subCtr in this->Controls) {
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -122,7 +122,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkColor = System::Drawing::Color::FromArgb(40, 65, 82);
 		shadeDarkerColor = System::Drawing::Color::FromArgb(20, 35, 42);
 		txtColor = System::Drawing::Color::White;
-		for each(System::Object ^ subCtr in this->Controls) {
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -138,7 +138,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkerColor = System::Drawing::Color::FromArgb(30, 20, 40);
 		txtColor = System::Drawing::Color::White;
 
-		for each(System::Object ^ subCtr in this->Controls) {
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -154,7 +154,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkerColor = System::Drawing::Color::FromArgb(0, 0, 0);
 		txtColor = System::Drawing::Color::White;
 
-		for each(System::Object ^ subCtr in this->Controls) {
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -170,7 +170,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkerColor = System::Drawing::Color::FromArgb(255, 255, 255);
 		txtColor = System::Drawing::Color::Black;
 
-		for each(System::Object ^ subCtr in this->Controls) {
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -186,7 +186,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkerColor = System::Drawing::Color::FromArgb(55, 95, 45);
 		txtColor = System::Drawing::Color::Black;
 
-		for each(System::Object ^ subCtr in this->Controls) {
+		for each (System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -322,7 +322,7 @@ System::Void SAP::MainForm::songListGridView_CellMouseDoubleClick(System::Object
 					if (player->getTimeInMiliseconds() == -1) {
 						this->audioTimeSlider->Enabled = false;
 					} else {
-						this->audioTimeSlider->Maximum = player->getTimeInMiliseconds();
+						this->audioTimeSlider->Maximum = player->getLenghtInSeconds();
 					}
 
 					if (wasPlaying) {
@@ -353,10 +353,10 @@ System::Void SAP::MainForm::seekBarUpdate_Tick(System::Object^ sender, System::E
 
 	if (audioTimeSlider->Enabled &&
 		!userIsInteracting &&
-		player->getTimeInMiliseconds() >= 0 &&
-		player->getTimeInMiliseconds() < audioTimeSlider->Maximum) {
+		player->getLenghtInSeconds() >= 0 &&
+		player->getTimeInSeconds() < audioTimeSlider->Maximum) {
 
-		audioTimeSlider->Value = player->getTimeInMiliseconds();
+		audioTimeSlider->Value = player->getTimeInSeconds();
 	}
 }
 
@@ -379,7 +379,7 @@ System::Void SAP::MainForm::audioTimeSlider_MouseUp(System::Object^ sender, Syst
 	if (player != nullptr) {
 
 		if (this->audioTimeSlider->Enabled && !userIsInteracting) {
-			player->setTimeInMiliseconds(0);
+			player->setTimeInMiliseconds(audioTimeSlider->Value * 1000);
 		}
 
 	}
@@ -391,8 +391,8 @@ System::Void SAP::MainForm::previousButton_Click(System::Object^ sender, System:
 		if (player->getTimeInMiliseconds() > 5000) {
 			player->setTimeInMiliseconds(0);
 			if (!wasPlaying) {
-				if (player->getTimeInMiliseconds() >= 0 && player->getTimeInMiliseconds() < this->audioTimeSlider->Maximum) {
-					this->audioTimeSlider->Value = player->getTimeInMiliseconds();
+				if (player->getTimeInSeconds() >= 0 && player->getTimeInSeconds() < this->audioTimeSlider->Maximum) {
+					this->audioTimeSlider->Value = player->getTimeInSeconds();
 				}
 			}
 			return;
@@ -402,8 +402,8 @@ System::Void SAP::MainForm::previousButton_Click(System::Object^ sender, System:
 
 			player->setTimeInMiliseconds(0);
 			if (!wasPlaying) {
-				if (player->getTimeInMiliseconds() >= 0 && player->getTimeInMiliseconds() < this->audioTimeSlider->Maximum) {
-					this->audioTimeSlider->Value = player->getTimeInMiliseconds();
+				if (player->getTimeInSeconds() >= 0 && player->getTimeInSeconds() < this->audioTimeSlider->Maximum) {
+					this->audioTimeSlider->Value = player->getTimeInSeconds();
 				}
 			}
 
@@ -434,8 +434,8 @@ System::Void SAP::MainForm::nextButton_Click(System::Object^ sender, System::Eve
 		if (player != nullptr) {
 			player->setTimeInMiliseconds(0);
 			if (!wasPlaying) {
-				if (player->getTimeInMiliseconds() >= 0 && player->getTimeInMiliseconds() < this->audioTimeSlider->Maximum) {
-					this->audioTimeSlider->Value = player->getTimeInMiliseconds();
+				if (player->getTimeInSeconds() >= 0 && player->getTimeInSeconds() < this->audioTimeSlider->Maximum) {
+					this->audioTimeSlider->Value = player->getTimeInSeconds();
 				}
 			}
 		}
@@ -489,4 +489,5 @@ System::Void SAP::MainForm::MainForm_Shown(System::Object^ sender, System::Event
 	we->enableDesktopDarkMode();
 	we->enableModernRoundedCorners();
 	we->setCustomBorderColor();
+	we->enableWindowAnimations();
 }

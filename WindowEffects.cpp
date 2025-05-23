@@ -29,6 +29,10 @@ bool SAP::WindowEffects::enableModernRoundedCorners() {
 	return m_winIntegration->enableRoundedCorners();
 }
 
+bool SAP::WindowEffects::enableWindowAnimations() {
+	return m_winIntegration->enableTransitionAnimations();
+}
+
 bool SAP::WindowEffects::systemCompositionIsEnabled() {
 	return m_winIntegration->DWMCompositionIsEnabled();
 }

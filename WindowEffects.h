@@ -14,6 +14,7 @@ namespace SAP {
 		bool enableDesktopDarkMode();
 		bool setCustomBorderColor();
 		bool enableModernRoundedCorners();
+		bool enableWindowAnimations();
 
 		bool systemCompositionIsEnabled();
 

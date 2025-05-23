@@ -18,7 +18,7 @@ namespace Native {
 
 		float getSoundLenght();
 		uint64_t getMilisecondTime();
-		void setMilisecondTime(uint64_t time);
+		bool setMilisecondTime(uint64_t time);
 		bool setEngineVolume(float volume);
 	private:
 		ma_result m_result;

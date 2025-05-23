@@ -3,7 +3,7 @@
 
 Native::WindowsDWMIntegration::WindowsDWMIntegration(HWND windowHandlerPointer) {
 	m_windowMargins = { 1,1,1,1 };
-	m_hwnd = windowHandlerPointer;
+	m_handle = windowHandlerPointer;
 }
 
 Native::WindowsDWMIntegration::~WindowsDWMIntegration() {}
@@ -11,30 +11,36 @@ Native::WindowsDWMIntegration::~WindowsDWMIntegration() {}
 bool Native::WindowsDWMIntegration::enableDwmShadows() {
 	HRESULT hr = S_OK;
 	const DWORD DWMWCP_ENABLED = DWMNCRENDERINGPOLICY::DWMNCRP_ENABLED;
-	hr = DwmExtendFrameIntoClientArea(m_hwnd, &m_windowMargins);
-	hr = DwmSetWindowAttribute(m_hwnd, DWMWA_NCRENDERING_POLICY, &DWMWCP_ENABLED, sizeof(DWMWCP_ENABLED));
-
+	hr = DwmExtendFrameIntoClientArea(m_handle, &m_windowMargins);
+	hr = DwmSetWindowAttribute(m_handle, DWMWA_NCRENDERING_POLICY, &DWMWCP_ENABLED, sizeof(DWMWCP_ENABLED));
 	return SUCCEEDED(hr);
 }
 
 bool Native::WindowsDWMIntegration::enableInmersiveDarkMode() {
 	HRESULT hr = S_OK;
 	const BOOL idmENABLED = true;
-	hr = DwmSetWindowAttribute(m_hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &idmENABLED, sizeof(idmENABLED));
+	hr = DwmSetWindowAttribute(m_handle, DWMWA_USE_IMMERSIVE_DARK_MODE, &idmENABLED, sizeof(idmENABLED));
 	return SUCCEEDED(hr);
 }
 
 bool Native::WindowsDWMIntegration::enableCustomBorderColor() {
 	HRESULT hr = S_OK;
 	const COLORREF borderColor = 0x00344F69;
-	hr = DwmSetWindowAttribute(m_hwnd, DWMWA_BORDER_COLOR, &borderColor, sizeof(borderColor));
+	hr = DwmSetWindowAttribute(m_handle, DWMWA_BORDER_COLOR, &borderColor, sizeof(borderColor));
 	return SUCCEEDED(hr);
 }
 
 bool Native::WindowsDWMIntegration::enableRoundedCorners() {
 	HRESULT hr = S_OK;
 	const DWORD DWMWCP_ROUND = DWM_WINDOW_CORNER_PREFERENCE::DWMWCP_DEFAULT;
-	hr = DwmSetWindowAttribute(m_hwnd, DWMWA_WINDOW_CORNER_PREFERENCE, &DWMWCP_ROUND, sizeof(DWMWCP_ROUND));
+	hr = DwmSetWindowAttribute(m_handle, DWMWA_WINDOW_CORNER_PREFERENCE, &DWMWCP_ROUND, sizeof(DWMWCP_ROUND));
+	return SUCCEEDED(hr);
+}
+
+bool Native::WindowsDWMIntegration::enableTransitionAnimations() {
+	HRESULT hr = S_OK;
+	BOOL transitions_disabled = false;
+	hr = DwmSetWindowAttribute(m_handle, DWMWA_TRANSITIONS_FORCEDISABLED, &transitions_disabled, sizeof(transitions_disabled));
 	return SUCCEEDED(hr);
 }
 
@@ -58,7 +64,7 @@ LRESULT Native::WindowsDWMIntegration::windowHitTest(LPARAM wndProcParam) {
 	};
 
 	RECT window{};
-	if (!GetWindowRect(m_hwnd, &window)) {
+	if (!GetWindowRect(m_handle, &window)) {
 		return HTNOWHERE;
 	}
 

@@ -47,7 +47,10 @@ float SAP::Player::getLenghtInSeconds() {
 }
 
 void SAP::Player::setTimeInMiliseconds(uint64_t time) {
-	m_driver->setMilisecondTime(time);
+	if (!m_driver->setMilisecondTime(time)) {
+		Debug::WriteLine("Player: ERROR: Failed to set new milisecond time");
+	}
+	Debug::WriteLine("Player: OK: New milisecond time set");
 }
 
 void SAP::Player::setVolume(float vol) {

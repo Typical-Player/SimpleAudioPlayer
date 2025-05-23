@@ -34,18 +34,12 @@ bool Native::MiniaudioDriver::loadFile(std::wstring& filePath) {
 
 bool Native::MiniaudioDriver::playSound() {
 	m_result = ma_sound_start(&m_sound);
-	if (m_result != MA_SUCCESS) {
-		return false;
-	}
-	return true;
+	return m_result == MA_SUCCESS;
 }
 
 bool Native::MiniaudioDriver::pauseSound() {
 	m_result = ma_sound_stop(&m_sound);
-	if (m_result != MA_SUCCESS) {
-		return false;
-	}
-	return true;
+	return m_result == MA_SUCCESS;
 }
 
 bool Native::MiniaudioDriver::paused() {
@@ -65,15 +59,14 @@ uint64_t Native::MiniaudioDriver::getMilisecondTime() {
 	return ma_sound_get_time_in_milliseconds(&m_sound);
 }
 
-void Native::MiniaudioDriver::setMilisecondTime(uint64_t time) {
-	ma_engine_set_time_in_milliseconds(&m_engine, time);
+bool Native::MiniaudioDriver::setMilisecondTime(uint64_t time) {
+	m_result = ma_engine_set_time_in_milliseconds(&m_engine, time);
+	m_result = ma_sound_seek_to_pcm_frame(&m_sound, time * ma_engine_get_sample_rate(&m_engine) / 1000);
+
+	return m_result == MA_SUCCESS;
 }
 
 bool Native::MiniaudioDriver::setEngineVolume(float volume) {
 	m_result = ma_engine_set_volume(&m_engine, volume);
-	if (m_result != MA_SUCCESS) {
-		return false;
-	}
-
-	return true;
+	return m_result == MA_SUCCESS;
 }
