@@ -65,6 +65,12 @@
     <ClInclude Include="Lyrics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WindowsDWMIntegration.h">
+      <Filter>Native</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowEffects.h">
+      <Filter>Native Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -102,6 +108,12 @@
     </ClCompile>
     <ClCompile Include="Licenses.cpp">
       <Filter>Forms Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowsDWMIntegration.cpp">
+      <Filter>Native</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowEffects.cpp">
+      <Filter>Native Interfaces</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

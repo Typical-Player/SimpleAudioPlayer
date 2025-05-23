@@ -41,6 +41,8 @@ System::Void SAP::MainForm::quickImportToolStripMenuItem_Click(System::Object^ s
 	}
 
 	folderDialog = gcnew System::Windows::Forms::FolderBrowserDialog();
+	auto ofd = gcnew OpenFileDialog();
+
 	if (folderDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK && folderDialog->SelectedPath != "") {
 		array<String^>^ files = System::IO::Directory::GetFiles(folderDialog->SelectedPath);
 
@@ -48,7 +50,7 @@ System::Void SAP::MainForm::quickImportToolStripMenuItem_Click(System::Object^ s
 
 		loading = true;
 		this->songTitleLabel->Text = "Loading...";
-		for each (String ^ file in files) {
+		for each(String ^ file in files) {
 			File^ f = gcnew File(file);
 
 			if (f->getIsValid()) {
@@ -68,7 +70,7 @@ System::Void SAP::MainForm::quickImportToolStripMenuItem_Click(System::Object^ s
 void SAP::MainForm::updateColor(System::Windows::Forms::Control^ c) {
 	c->BackColor = baseColor;
 	c->ForeColor = txtColor;
-	for each (System::Object ^ subCtr in c->Controls) {
+	for each(System::Object ^ subCtr in c->Controls) {
 		auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 		if (control != nullptr) {
 			updateColor(control);
@@ -105,7 +107,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkColor = System::Drawing::Color::FromArgb(25, 25, 25);
 		shadeDarkerColor = System::Drawing::Color::FromArgb(16, 16, 16);
 		txtColor = System::Drawing::Color::White;
-		for each (System::Object ^ subCtr in this->Controls) {
+		for each(System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -120,7 +122,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkColor = System::Drawing::Color::FromArgb(40, 65, 82);
 		shadeDarkerColor = System::Drawing::Color::FromArgb(20, 35, 42);
 		txtColor = System::Drawing::Color::White;
-		for each (System::Object ^ subCtr in this->Controls) {
+		for each(System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -136,7 +138,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkerColor = System::Drawing::Color::FromArgb(30, 20, 40);
 		txtColor = System::Drawing::Color::White;
 
-		for each (System::Object ^ subCtr in this->Controls) {
+		for each(System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -152,7 +154,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkerColor = System::Drawing::Color::FromArgb(0, 0, 0);
 		txtColor = System::Drawing::Color::White;
 
-		for each (System::Object ^ subCtr in this->Controls) {
+		for each(System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -168,7 +170,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkerColor = System::Drawing::Color::FromArgb(255, 255, 255);
 		txtColor = System::Drawing::Color::Black;
 
-		for each (System::Object ^ subCtr in this->Controls) {
+		for each(System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -184,7 +186,7 @@ void SAP::MainForm::loadColor(int colorId) {
 		shadeDarkerColor = System::Drawing::Color::FromArgb(55, 95, 45);
 		txtColor = System::Drawing::Color::Black;
 
-		for each (System::Object ^ subCtr in this->Controls) {
+		for each(System::Object ^ subCtr in this->Controls) {
 			auto control = static_cast<System::Windows::Forms::Control^>(subCtr);
 			if (control != nullptr) {
 				updateColor(control);
@@ -475,4 +477,16 @@ System::Void SAP::MainForm::lyricsUpdateTimer_Tick(System::Object^ sender, Syste
 	if (lyrics->getIsSynced()) {
 		lyrics->updateActives(player->getTimeInMiliseconds(), this->songLRCList);
 	}
+}
+
+System::Void SAP::MainForm::MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	we = gcnew SAP::WindowEffects(this->Handle.ToPointer());
+}
+
+System::Void SAP::MainForm::MainForm_Shown(System::Object^ sender, System::EventArgs^ e) {
+	we->enableWindowShadows();
+	we->systemCompositionIsEnabled();
+	we->enableDesktopDarkMode();
+	we->enableModernRoundedCorners();
+	we->setCustomBorderColor();
 }

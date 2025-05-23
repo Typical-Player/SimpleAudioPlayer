@@ -5,6 +5,7 @@
 #include "Settings.h"
 #include "Lyrics.h"
 #include "Player.h"
+#include "WindowEffects.h"
 
 namespace SAP {
 	using namespace System;
@@ -71,13 +72,26 @@ namespace SAP {
 	private: System::Windows::Forms::Label^ songTotalTimeLabel;
 	private: System::Windows::Forms::ListBox^ songLRCList;
 	private: System::Windows::Forms::Timer^ lyricsUpdateTimer;
+	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel4;
+	private: System::Windows::Forms::FlowLayoutPanel^ flowLayoutPanel3;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Button^ button1;
+
+
+
+
+
+
+
+
 	private: System::ComponentModel::IContainer^ components;
 #pragma region Windows Form Designer generated code
 		   void InitializeComponent(void) {
 			   this->components = (gcnew System::ComponentModel::Container());
 			   System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
-			   System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			   System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			   System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			   System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			   this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			   this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			   this->quickImportToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -121,6 +135,11 @@ namespace SAP {
 			   this->songColumnListDuration = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			   this->seekBarUpdate = (gcnew System::Windows::Forms::Timer(this->components));
 			   this->lyricsUpdateTimer = (gcnew System::Windows::Forms::Timer(this->components));
+			   this->panel1 = (gcnew System::Windows::Forms::Panel());
+			   this->flowLayoutPanel4 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			   this->button1 = (gcnew System::Windows::Forms::Button());
+			   this->flowLayoutPanel3 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			   this->label1 = (gcnew System::Windows::Forms::Label());
 			   this->menuStrip1->SuspendLayout();
 			   this->tableLayoutPanel1->SuspendLayout();
 			   this->tableLayoutPanel2->SuspendLayout();
@@ -138,6 +157,9 @@ namespace SAP {
 			   this->tabPageSongLyrics->SuspendLayout();
 			   this->tabPageSongInfo->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->songListGridView))->BeginInit();
+			   this->panel1->SuspendLayout();
+			   this->flowLayoutPanel4->SuspendLayout();
+			   this->flowLayoutPanel3->SuspendLayout();
 			   this->SuspendLayout();
 			   // 
 			   // menuStrip1
@@ -148,9 +170,9 @@ namespace SAP {
 				   this->fileToolStripMenuItem,
 					   this->sAPSimpleAudioPlayerToolStripMenuItem
 			   });
-			   this->menuStrip1->Location = System::Drawing::Point(2, 2);
+			   this->menuStrip1->Location = System::Drawing::Point(2, 27);
 			   this->menuStrip1->Name = L"menuStrip1";
-			   this->menuStrip1->Size = System::Drawing::Size(1080, 24);
+			   this->menuStrip1->Size = System::Drawing::Size(1096, 24);
 			   this->menuStrip1->TabIndex = 0;
 			   this->menuStrip1->Text = L"menuStrip1";
 			   // 
@@ -228,12 +250,12 @@ namespace SAP {
 			   this->tableLayoutPanel1->Controls->Add(this->tableLayoutPanel2, 0, 1);
 			   this->tableLayoutPanel1->Controls->Add(this->tableLayoutPanel5, 0, 0);
 			   this->tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->tableLayoutPanel1->Location = System::Drawing::Point(2, 26);
+			   this->tableLayoutPanel1->Location = System::Drawing::Point(2, 51);
 			   this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
 			   this->tableLayoutPanel1->RowCount = 2;
 			   this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
 			   this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 120)));
-			   this->tableLayoutPanel1->Size = System::Drawing::Size(1080, 469);
+			   this->tableLayoutPanel1->Size = System::Drawing::Size(1096, 447);
 			   this->tableLayoutPanel1->TabIndex = 1;
 			   // 
 			   // tableLayoutPanel2
@@ -245,12 +267,12 @@ namespace SAP {
 				   20)));
 			   this->tableLayoutPanel2->Controls->Add(this->tableLayoutPanel3, 0, 0);
 			   this->tableLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->tableLayoutPanel2->Location = System::Drawing::Point(0, 349);
+			   this->tableLayoutPanel2->Location = System::Drawing::Point(0, 327);
 			   this->tableLayoutPanel2->Margin = System::Windows::Forms::Padding(0);
 			   this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
 			   this->tableLayoutPanel2->RowCount = 1;
 			   this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
-			   this->tableLayoutPanel2->Size = System::Drawing::Size(1080, 120);
+			   this->tableLayoutPanel2->Size = System::Drawing::Size(1096, 120);
 			   this->tableLayoutPanel2->TabIndex = 0;
 			   // 
 			   // tableLayoutPanel3
@@ -272,7 +294,7 @@ namespace SAP {
 			   this->tableLayoutPanel3->RowCount = 2;
 			   this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
 			   this->tableLayoutPanel3->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			   this->tableLayoutPanel3->Size = System::Drawing::Size(1080, 120);
+			   this->tableLayoutPanel3->Size = System::Drawing::Size(1096, 120);
 			   this->tableLayoutPanel3->TabIndex = 1;
 			   // 
 			   // tableLayoutPanel4
@@ -293,7 +315,7 @@ namespace SAP {
 			   this->tableLayoutPanel4->RowCount = 2;
 			   this->tableLayoutPanel4->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
 			   this->tableLayoutPanel4->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			   this->tableLayoutPanel4->Size = System::Drawing::Size(1080, 60);
+			   this->tableLayoutPanel4->Size = System::Drawing::Size(1096, 60);
 			   this->tableLayoutPanel4->TabIndex = 0;
 			   // 
 			   // songTitleLabel
@@ -305,7 +327,7 @@ namespace SAP {
 			   this->songTitleLabel->ForeColor = System::Drawing::Color::White;
 			   this->songTitleLabel->Location = System::Drawing::Point(23, 5);
 			   this->songTitleLabel->Name = L"songTitleLabel";
-			   this->songTitleLabel->Size = System::Drawing::Size(1034, 30);
+			   this->songTitleLabel->Size = System::Drawing::Size(1050, 30);
 			   this->songTitleLabel->TabIndex = 0;
 			   this->songTitleLabel->Text = L"Import a folder (File > Quick scan) and select a folder";
 			   this->songTitleLabel->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -319,7 +341,7 @@ namespace SAP {
 			   this->songArtistLabel->ForeColor = System::Drawing::Color::DarkGray;
 			   this->songArtistLabel->Location = System::Drawing::Point(23, 35);
 			   this->songArtistLabel->Name = L"songArtistLabel";
-			   this->songArtistLabel->Size = System::Drawing::Size(1034, 20);
+			   this->songArtistLabel->Size = System::Drawing::Size(1050, 20);
 			   this->songArtistLabel->TabIndex = 1;
 			   this->songArtistLabel->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			   // 
@@ -340,7 +362,7 @@ namespace SAP {
 			   this->tableLayoutPanel6->RowCount = 2;
 			   this->tableLayoutPanel6->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
 			   this->tableLayoutPanel6->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			   this->tableLayoutPanel6->Size = System::Drawing::Size(840, 60);
+			   this->tableLayoutPanel6->Size = System::Drawing::Size(856, 60);
 			   this->tableLayoutPanel6->TabIndex = 1;
 			   // 
 			   // audioTimeSlider
@@ -349,7 +371,7 @@ namespace SAP {
 			   this->audioTimeSlider->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->audioTimeSlider->Location = System::Drawing::Point(3, 3);
 			   this->audioTimeSlider->Name = L"audioTimeSlider";
-			   this->audioTimeSlider->Size = System::Drawing::Size(834, 24);
+			   this->audioTimeSlider->Size = System::Drawing::Size(850, 24);
 			   this->audioTimeSlider->TabIndex = 0;
 			   this->audioTimeSlider->TickStyle = System::Windows::Forms::TickStyle::None;
 			   this->audioTimeSlider->ValueChanged += gcnew System::EventHandler(this, &MainForm::audioTimeSlider_ValueChanged);
@@ -370,7 +392,7 @@ namespace SAP {
 			   this->flowLayoutPanel1->Location = System::Drawing::Point(0, 30);
 			   this->flowLayoutPanel1->Margin = System::Windows::Forms::Padding(0);
 			   this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-			   this->flowLayoutPanel1->Size = System::Drawing::Size(690, 30);
+			   this->flowLayoutPanel1->Size = System::Drawing::Size(706, 30);
 			   this->flowLayoutPanel1->TabIndex = 1;
 			   // 
 			   // previousButton
@@ -473,7 +495,7 @@ namespace SAP {
 			   this->flowLayoutPanel2->Controls->Add(this->songCurrentTimeLabel);
 			   this->flowLayoutPanel2->Controls->Add(this->songTotalTimeLabel);
 			   this->flowLayoutPanel2->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->flowLayoutPanel2->Location = System::Drawing::Point(693, 33);
+			   this->flowLayoutPanel2->Location = System::Drawing::Point(709, 33);
 			   this->flowLayoutPanel2->Name = L"flowLayoutPanel2";
 			   this->flowLayoutPanel2->Size = System::Drawing::Size(144, 24);
 			   this->flowLayoutPanel2->TabIndex = 2;
@@ -508,7 +530,7 @@ namespace SAP {
 			   // audioVolumeSlider
 			   // 
 			   this->audioVolumeSlider->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->audioVolumeSlider->Location = System::Drawing::Point(863, 63);
+			   this->audioVolumeSlider->Location = System::Drawing::Point(879, 63);
 			   this->audioVolumeSlider->Margin = System::Windows::Forms::Padding(3, 3, 20, 3);
 			   this->audioVolumeSlider->Maximum = 100;
 			   this->audioVolumeSlider->Name = L"audioVolumeSlider";
@@ -534,7 +556,7 @@ namespace SAP {
 			   this->tableLayoutPanel5->Name = L"tableLayoutPanel5";
 			   this->tableLayoutPanel5->RowCount = 1;
 			   this->tableLayoutPanel5->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
-			   this->tableLayoutPanel5->Size = System::Drawing::Size(1080, 349);
+			   this->tableLayoutPanel5->Size = System::Drawing::Size(1096, 327);
 			   this->tableLayoutPanel5->TabIndex = 1;
 			   // 
 			   // tableLayoutPanel7
@@ -547,13 +569,13 @@ namespace SAP {
 			   this->tableLayoutPanel7->Controls->Add(this->songPicBox, 0, 0);
 			   this->tableLayoutPanel7->Controls->Add(this->songInfoTabCtrl, 0, 1);
 			   this->tableLayoutPanel7->Dock = System::Windows::Forms::DockStyle::Fill;
-			   this->tableLayoutPanel7->Location = System::Drawing::Point(830, 0);
+			   this->tableLayoutPanel7->Location = System::Drawing::Point(846, 0);
 			   this->tableLayoutPanel7->Margin = System::Windows::Forms::Padding(0);
 			   this->tableLayoutPanel7->Name = L"tableLayoutPanel7";
 			   this->tableLayoutPanel7->RowCount = 2;
 			   this->tableLayoutPanel7->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 220)));
 			   this->tableLayoutPanel7->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
-			   this->tableLayoutPanel7->Size = System::Drawing::Size(250, 349);
+			   this->tableLayoutPanel7->Size = System::Drawing::Size(250, 327);
 			   this->tableLayoutPanel7->TabIndex = 2;
 			   // 
 			   // songPicBox
@@ -580,7 +602,7 @@ namespace SAP {
 			   this->songInfoTabCtrl->Name = L"songInfoTabCtrl";
 			   this->songInfoTabCtrl->Padding = System::Drawing::Point(0, 0);
 			   this->songInfoTabCtrl->SelectedIndex = 0;
-			   this->songInfoTabCtrl->Size = System::Drawing::Size(250, 129);
+			   this->songInfoTabCtrl->Size = System::Drawing::Size(250, 107);
 			   this->songInfoTabCtrl->TabIndex = 1;
 			   // 
 			   // tabPageSongLyrics
@@ -592,7 +614,7 @@ namespace SAP {
 			   this->tabPageSongLyrics->Location = System::Drawing::Point(4, 22);
 			   this->tabPageSongLyrics->Margin = System::Windows::Forms::Padding(0);
 			   this->tabPageSongLyrics->Name = L"tabPageSongLyrics";
-			   this->tabPageSongLyrics->Size = System::Drawing::Size(242, 103);
+			   this->tabPageSongLyrics->Size = System::Drawing::Size(242, 81);
 			   this->tabPageSongLyrics->TabIndex = 0;
 			   this->tabPageSongLyrics->Text = L"Lyrics";
 			   // 
@@ -608,7 +630,7 @@ namespace SAP {
 			   this->songLRCList->Location = System::Drawing::Point(0, 0);
 			   this->songLRCList->Margin = System::Windows::Forms::Padding(5);
 			   this->songLRCList->Name = L"songLRCList";
-			   this->songLRCList->Size = System::Drawing::Size(242, 103);
+			   this->songLRCList->Size = System::Drawing::Size(242, 81);
 			   this->songLRCList->TabIndex = 0;
 			   // 
 			   // tabPageSongInfo
@@ -620,7 +642,7 @@ namespace SAP {
 			   this->tabPageSongInfo->Location = System::Drawing::Point(4, 22);
 			   this->tabPageSongInfo->Margin = System::Windows::Forms::Padding(0);
 			   this->tabPageSongInfo->Name = L"tabPageSongInfo";
-			   this->tabPageSongInfo->Size = System::Drawing::Size(242, 103);
+			   this->tabPageSongInfo->Size = System::Drawing::Size(242, 81);
 			   this->tabPageSongInfo->TabIndex = 1;
 			   this->tabPageSongInfo->Text = L"Detailed Information";
 			   // 
@@ -637,7 +659,7 @@ namespace SAP {
 			   this->tabSongInfoTxtBox->Multiline = true;
 			   this->tabSongInfoTxtBox->Name = L"tabSongInfoTxtBox";
 			   this->tabSongInfoTxtBox->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-			   this->tabSongInfoTxtBox->Size = System::Drawing::Size(242, 103);
+			   this->tabSongInfoTxtBox->Size = System::Drawing::Size(242, 81);
 			   this->tabSongInfoTxtBox->TabIndex = 0;
 			   // 
 			   // songListGridView
@@ -651,33 +673,33 @@ namespace SAP {
 			   this->songListGridView->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			   this->songListGridView->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleVertical;
 			   this->songListGridView->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			   dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			   dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+			   dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			   dataGridViewCellStyle5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			   dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   dataGridViewCellStyle1->ForeColor = System::Drawing::Color::White;
-			   dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(16)),
+			   dataGridViewCellStyle5->ForeColor = System::Drawing::Color::White;
+			   dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(16)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(16)), static_cast<System::Int32>(static_cast<System::Byte>(16)));
-			   dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::White;
-			   dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			   this->songListGridView->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			   dataGridViewCellStyle5->SelectionForeColor = System::Drawing::Color::White;
+			   dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			   this->songListGridView->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			   this->songListGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			   this->songListGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				   this->songListColumnTitle,
 					   this->songListColumnArtist, this->songColumnListAlbum, this->songColumnListDuration
 			   });
-			   dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			   dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+			   dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			   dataGridViewCellStyle6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			   dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   dataGridViewCellStyle2->ForeColor = System::Drawing::Color::White;
-			   dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(16)),
+			   dataGridViewCellStyle6->ForeColor = System::Drawing::Color::White;
+			   dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(16)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(16)), static_cast<System::Int32>(static_cast<System::Byte>(16)));
-			   dataGridViewCellStyle2->SelectionForeColor = System::Drawing::Color::White;
-			   dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			   this->songListGridView->DefaultCellStyle = dataGridViewCellStyle2;
+			   dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::White;
+			   dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			   this->songListGridView->DefaultCellStyle = dataGridViewCellStyle6;
 			   this->songListGridView->Dock = System::Windows::Forms::DockStyle::Fill;
 			   this->songListGridView->GridColor = System::Drawing::Color::White;
 			   this->songListGridView->Location = System::Drawing::Point(0, 0);
@@ -690,7 +712,7 @@ namespace SAP {
 			   this->songListGridView->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
 			   this->songListGridView->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			   this->songListGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			   this->songListGridView->Size = System::Drawing::Size(830, 349);
+			   this->songListGridView->Size = System::Drawing::Size(846, 327);
 			   this->songListGridView->TabIndex = 3;
 			   this->songListGridView->CellMouseDoubleClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &MainForm::songListGridView_CellMouseDoubleClick);
 			   // 
@@ -737,26 +759,91 @@ namespace SAP {
 			   this->lyricsUpdateTimer->Interval = 50;
 			   this->lyricsUpdateTimer->Tick += gcnew System::EventHandler(this, &MainForm::lyricsUpdateTimer_Tick);
 			   // 
-			   // Form1
+			   // panel1
+			   // 
+			   this->panel1->Controls->Add(this->flowLayoutPanel4);
+			   this->panel1->Controls->Add(this->flowLayoutPanel3);
+			   this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
+			   this->panel1->Location = System::Drawing::Point(2, 2);
+			   this->panel1->Name = L"panel1";
+			   this->panel1->Size = System::Drawing::Size(1096, 25);
+			   this->panel1->TabIndex = 2;
+			   this->panel1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::panel1_MouseDown);
+			   this->panel1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::panel1_MouseMove);
+			   this->panel1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MainForm::panel1_MouseUp);
+			   // 
+			   // flowLayoutPanel4
+			   // 
+			   this->flowLayoutPanel4->Controls->Add(this->button1);
+			   this->flowLayoutPanel4->Dock = System::Windows::Forms::DockStyle::Right;
+			   this->flowLayoutPanel4->FlowDirection = System::Windows::Forms::FlowDirection::RightToLeft;
+			   this->flowLayoutPanel4->Location = System::Drawing::Point(879, 0);
+			   this->flowLayoutPanel4->Name = L"flowLayoutPanel4";
+			   this->flowLayoutPanel4->Size = System::Drawing::Size(217, 25);
+			   this->flowLayoutPanel4->TabIndex = 1;
+			   // 
+			   // button1
+			   // 
+			   this->button1->FlatAppearance->BorderSize = 0;
+			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->button1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 6.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->button1->ForeColor = System::Drawing::Color::White;
+			   this->button1->Location = System::Drawing::Point(142, 0);
+			   this->button1->Margin = System::Windows::Forms::Padding(0);
+			   this->button1->Name = L"button1";
+			   this->button1->Size = System::Drawing::Size(75, 25);
+			   this->button1->TabIndex = 0;
+			   this->button1->Text = L"Close";
+			   this->button1->UseVisualStyleBackColor = true;
+			   this->button1->Click += gcnew System::EventHandler(this, &MainForm::button1_Click);
+			   // 
+			   // flowLayoutPanel3
+			   // 
+			   this->flowLayoutPanel3->Controls->Add(this->label1);
+			   this->flowLayoutPanel3->Dock = System::Windows::Forms::DockStyle::Left;
+			   this->flowLayoutPanel3->Location = System::Drawing::Point(0, 0);
+			   this->flowLayoutPanel3->Name = L"flowLayoutPanel3";
+			   this->flowLayoutPanel3->Size = System::Drawing::Size(134, 25);
+			   this->flowLayoutPanel3->TabIndex = 0;
+			   // 
+			   // label1
+			   // 
+			   this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(120)), static_cast<System::Int32>(static_cast<System::Byte>(120)),
+				   static_cast<System::Int32>(static_cast<System::Byte>(120)));
+			   this->label1->Location = System::Drawing::Point(3, 0);
+			   this->label1->Name = L"label1";
+			   this->label1->Size = System::Drawing::Size(131, 25);
+			   this->label1->TabIndex = 0;
+			   this->label1->Text = L"Simple Audio Player";
+			   this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			   // 
+			   // MainForm
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				   static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			   this->ClientSize = System::Drawing::Size(1084, 497);
+			   this->ClientSize = System::Drawing::Size(1100, 500);
 			   this->Controls->Add(this->tableLayoutPanel1);
 			   this->Controls->Add(this->menuStrip1);
+			   this->Controls->Add(this->panel1);
 			   this->DoubleBuffered = true;
 			   this->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
+			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			   this->MainMenuStrip = this->menuStrip1;
 			   this->MinimumSize = System::Drawing::Size(1100, 500);
-			   this->Name = L"Form1";
+			   this->Name = L"MainForm";
 			   this->Padding = System::Windows::Forms::Padding(2);
 			   this->ShowIcon = false;
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			   this->Text = L"SAP (Simple Audio Player)";
+			   this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
+			   this->Shown += gcnew System::EventHandler(this, &MainForm::MainForm_Shown);
 			   this->menuStrip1->ResumeLayout(false);
 			   this->menuStrip1->PerformLayout();
 			   this->tableLayoutPanel1->ResumeLayout(false);
@@ -779,6 +866,9 @@ namespace SAP {
 			   this->tabPageSongInfo->ResumeLayout(false);
 			   this->tabPageSongInfo->PerformLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->songListGridView))->EndInit();
+			   this->panel1->ResumeLayout(false);
+			   this->flowLayoutPanel4->ResumeLayout(false);
+			   this->flowLayoutPanel3->ResumeLayout(false);
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
 
@@ -815,6 +905,7 @@ namespace SAP {
 		   //
 
 		   LRCService::Lyrics^ lyrics = gcnew LRCService::Lyrics();
+		   WindowEffects^ we;
 		   FolderBrowserDialog^ folderDialog;
 		   Player^ player;
 		   File^ currentFile;
@@ -886,5 +977,40 @@ namespace SAP {
 		   //Lyrics functions
 		   //
 		   System::Void lyricsUpdateTimer_Tick(System::Object^ sender, System::EventArgs^ e);
+
+		   System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e);
+	protected:
+		virtual void WndProc(Message% m) override {
+			if (m.Msg == WM_NCHITTEST) {
+				if (we != nullptr) {
+					m.Result = we->windowBorderlessHitTest(m.LParam);
+					return;
+				}
+				m.Result = (IntPtr)HTNOWHERE;
+				return;
+			}
+
+			Form::WndProc(m);
+		}
+	private: System::Void MainForm_Shown(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+	}
+
+	private: bool dragging;
+	private: Point offset;
+	private: System::Void panel1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		dragging = true;
+		offset = Point(e->X, e->Y);
+	}
+	private: System::Void panel1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (dragging) {
+			Point currentScreenPosition = PointToScreen(Point(e->X, e->Y));
+			this->Location = Point(currentScreenPosition.X - offset.X, currentScreenPosition.Y - offset.Y);
+		}
+	}
+	private: System::Void panel1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		dragging = false;
+	}
 	};
 }

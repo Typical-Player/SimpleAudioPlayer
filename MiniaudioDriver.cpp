@@ -62,7 +62,7 @@ float Native::MiniaudioDriver::getSoundLenght() {
 }
 
 uint64_t Native::MiniaudioDriver::getMilisecondTime() {
-	return ma_engine_get_time_in_milliseconds(&m_engine);
+	return ma_sound_get_time_in_milliseconds(&m_sound);
 }
 
 void Native::MiniaudioDriver::setMilisecondTime(uint64_t time) {

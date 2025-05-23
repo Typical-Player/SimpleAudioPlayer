@@ -158,6 +158,8 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="TaglibDriver.h" />
+    <ClInclude Include="WindowEffects.h" />
+    <ClInclude Include="WindowsDWMIntegration.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="About.cpp" />
@@ -172,6 +174,8 @@
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TaglibDriver.cpp" />
+    <ClCompile Include="WindowEffects.cpp" />
+    <ClCompile Include="WindowsDWMIntegration.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="albumCoverNoAvailable.png" />
