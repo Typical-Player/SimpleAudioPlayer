@@ -3,7 +3,6 @@
 #define _WINDOWSDWMINTEGRATION_H_
 #include <dwmapi.h>
 #include <windowsx.h>
-#pragma comment(lib, "dwmapi.lib")
 
 namespace Native {
 	class WindowsDWMIntegration {
